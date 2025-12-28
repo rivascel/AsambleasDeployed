@@ -11,6 +11,7 @@
     "build-and-copy": "npm run build && cp -r dist/* ../src/public/"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.89.0",
     "axios": "^1.13.2",
     "chart.js": "^4.5.1",
     "react": "^19.0.0",

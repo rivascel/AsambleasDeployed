@@ -3,6 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../components/UserContext";
+import AppContext from '../context/AppContext';
+
+const { apiUrl } = useContext(AppContext);
 
 const ProtectedRoute = ({ children }) => {
   const {
@@ -23,8 +26,8 @@ const ProtectedRoute = ({ children }) => {
         const isAdminRoute = location.pathname.startsWith("/admin");
 
         const endpoint = isAdminRoute
-          ? "https://localhost:3000/api/admin-data"
-          : "https://localhost:3000/api/owner-data";
+          ? `${apiUrl}/api/admin-data`
+          : `${apiUrl}/api/owner-data`;
 
         const response = await axios.get(endpoint, { withCredentials: true });
 

@@ -9,10 +9,12 @@ import { getAdmin, joinStreamAsViewer, startLocalStream,
 import { listenToSignalsFromAdmin, listenToSignals, registerViewer, getAdminStreaming,
           listenToRequests
  } from '../../supabase-client';
+import AppContext from '../context/AppContext';
 
 const socket11 = io("https://localhost:3000", {
   withCredentials: true,
 });
+const { apiUrl } = useContext(AppContext);
 
 const VideoGeneral = () => {
 const localRef = useRef();
@@ -39,7 +41,7 @@ const localRef = useRef();
     const fetchData = async () => {
       const admin = await getAdmin(roomId);
       try {
-        const response = await fetch("https://localhost:3000/api/recover-users-id", { 
+        const response = await fetch(`${apiUrl}/api/recover-users-id`, { 
           method: 'POST',
           headers: { 'Content-Type':'application/json' },
           body: JSON.stringify({ roomId: "main-room", userId: email })

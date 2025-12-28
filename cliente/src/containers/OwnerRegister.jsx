@@ -2,6 +2,9 @@ import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "../components/UserContext";
 import "../styles/Header.css";
+import AppContext from '../context/AppContext';
+
+const { apiUrl } = useContext(AppContext);
 
 const RegisterOwner = ({ onRegister }) => {
 
@@ -12,7 +15,7 @@ const RegisterOwner = ({ onRegister }) => {
   
     const handleSendLink = async () => {
       try {
-        await axios.post("https://localhost:3000/api/request-magic-link", 
+        await axios.post(`${apiUrl}/api/request-magic-link`, 
             { email },
             { withCredentials: true }
         );

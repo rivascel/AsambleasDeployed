@@ -2,6 +2,9 @@ console.log("✅ MagicLinkVerification.jsx actualizado");
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../components/UserContext";
+import AppContext from '../context/AppContext';
+
+const { apiUrl } = useContext(AppContext);
 
 const MagicLinkVerification = () => {
   const [loading, setLoading] = useState(true);
@@ -21,7 +24,7 @@ const MagicLinkVerification = () => {
       };
 
       try {
-        const res = await fetch(`https://localhost:3000/api/magic-link?token=${token}`, {
+        const res = await fetch(`${apiUrl}/api/magic-link?token=${token}`, {
           credentials: "include",
         });
 

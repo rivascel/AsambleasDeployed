@@ -3,10 +3,12 @@ import axios from "axios";
 import { UserContext } from "../../components/UserContext";
 import { io } from "socket.io-client";
 import { listenToUserRequests } from '../../supabase-client';
+import AppContext from '../context/AppContext';
 
 const socket7 = io("https://localhost:3000", {
   withCredentials: true,
 });
+const { apiUrl } = useContext(AppContext);
 
 const AskToParticipate = () => {
   const roomId = 'main-room';
@@ -84,7 +86,7 @@ const AskToParticipate = () => {
     const fetchUsers = async () =>  {
       try {
         const [pendingRes] = await Promise.all([
-          fetch("https://localhost:3000/api/recover-users-id", { 
+          fetch(`${apiUrl}/api/recover-users-id`, { 
               method: 'POST',
               headers: { 'Content-Type':'application/json' },
               body: JSON.stringify({ roomId: "main-room", userId: email }),

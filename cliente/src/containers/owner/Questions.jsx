@@ -2,10 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import { io } from "socket.io-client";
 import axios from 'axios';
 import { UserContext } from "../../components/UserContext";
+import AppContext from '../context/AppContext';
 
 const socket2 = io("https://localhost:3000", {
   withCredentials: true,
 });
+const { apiUrl } = useContext(AppContext);
 
 const Questions = () => {
   const [selected, setSelected] = useState(null);
@@ -39,8 +41,8 @@ const Questions = () => {
       proposicion: decision, 
       valor: parseInt(value),
     };
-    
-    await axios.post('https://localhost:3000/api/votacion', nuevoVoto)
+
+    await axios.post(`${apiUrl}/api/votacion`, nuevoVoto)
       .then(response => {
       })
     .catch(error => {

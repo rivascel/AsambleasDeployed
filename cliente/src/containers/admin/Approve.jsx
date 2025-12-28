@@ -147,7 +147,7 @@ const AttendeesList = () => {
 
     const handleApprove = async (userId) => {
     try {
-            const response = await fetch("https://localhost:3000/api/approved-users",
+            const response = await fetch(`${apiUrl}/api/approved-users`,
               { 
                   method: 'POST',
                   headers: { 'Content-type':'application/json' },
@@ -179,7 +179,7 @@ const AttendeesList = () => {
     try {
       console.log(`❌ Intentando cancelar aprobación de: ${userId}`);
       
-      const response = await fetch("https://localhost:3000/api/cancel-users", { 
+      const response = await fetch(`${apiUrl}/api/cancel-users`, { 
         method: 'POST',
         headers: { 'Content-type':'application/json' },
         body: JSON.stringify({ userId: userId }),

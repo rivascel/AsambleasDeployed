@@ -8,7 +8,9 @@ import VideoOwner from '../containers/owner/Video_owner';
 import MeetingPollOwner from '../containers/owner/Meeting_poll_owner';
 import Questions from '../containers/owner/Questions';
 import { UserContext } from "../components/UserContext";
-import Header from '../components/Header';
+import AppContext from '../context/AppContext';
+
+const { apiUrl } = useContext(AppContext);
 
 const socket5 = io("https://localhost:3000", {
   withCredentials: true,
@@ -29,7 +31,7 @@ const DashBoardOwner = () => {
   const { email, login, setQuorum, setApprovalVotes, setRejectVotes, setBlankVotes } = useContext(UserContext);
   
     useEffect(() => {
-    axios.get("https://localhost:3000/api/owner-data", {
+    axios.get(`${apiUrl}/api/owner-data`, {
       withCredentials: true,
       })
       .then((res) => {
@@ -48,7 +50,7 @@ const DashBoardOwner = () => {
   useEffect(() => {
     if (!email) return;
     
-    axios.post("https://localhost:3000/api/fileOwnerByEmail", 
+    axios.post(`${apiUrl}/api/fileOwnerByEmail`, 
             { email },
             { withCredentials: true },
         )
@@ -97,7 +99,7 @@ const DashBoardOwner = () => {
    
   const fetchOwners = async () => {
     try {
-      const response = await axios.get("https://localhost:3000/api/emailFile", {
+      const response = await axios.get(`${apiUrl}/api/emailFile`, {
         withCredentials: true,
       });
       if (Array.isArray(response.data)) {

@@ -11,6 +11,7 @@
     "build-and-copy": "npm run build && cp -r dist/* ../src/public/"
   },
   "dependencies": {
+    "axios": "^1.13.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.3"

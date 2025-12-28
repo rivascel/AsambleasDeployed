@@ -3,6 +3,7 @@ import axios from "axios";
 import { UserContext } from "../components/UserContext";
 import "../styles/Header.css";
 import AppContext from '../context/AppContext';
+import axios from "axios";
 
 const { apiUrl } = useContext(AppContext);
 

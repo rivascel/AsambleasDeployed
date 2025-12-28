@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { io } from "socket.io-client";
 import axios from 'axios';
 import { UserContext } from "../../components/UserContext";
-import AppContext from '../context/AppContext';
+import AppContext from '../../context/AppContext';
 
 const socket2 = io("https://localhost:3000", {
   withCredentials: true,

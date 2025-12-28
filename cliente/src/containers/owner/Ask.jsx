@@ -3,7 +3,7 @@ import axios from "axios";
 import { UserContext } from "../../components/UserContext";
 import { io } from "socket.io-client";
 import { listenToUserRequests } from '../../supabase-client';
-import AppContext from '../context/AppContext';
+import AppContext from '../../context/AppContext';
 
 const socket7 = io("https://localhost:3000", {
   withCredentials: true,

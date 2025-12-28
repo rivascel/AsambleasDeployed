@@ -9,7 +9,7 @@ import { getAdmin, joinStreamAsViewer, startLocalStream,
 import { listenToSignalsFromAdmin, listenToSignals, registerViewer, getAdminStreaming,
           listenToRequests
  } from '../../supabase-client';
-import AppContext from '../context/AppContext';
+import AppContext from '../../context/AppContext';
 
 const socket11 = io("https://localhost:3000", {
   withCredentials: true,

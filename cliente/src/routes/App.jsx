@@ -4,7 +4,6 @@ import Layout from '../containers/Layout';
 import AdminDashBoard from '../pages/AdminDashBoard';
 import OwnerDashBoard from '../pages/OwnerDashBoard';
 import useInitialState from '../hooks/useInitialState';
-import AppContext from '../context/AppContext';
 import MagicLinkVerification from '../containers/MagicLinkVerification';
 import AdminRegister from '../containers/admin/AdminRegister';
 import Home from '../pages/Home';

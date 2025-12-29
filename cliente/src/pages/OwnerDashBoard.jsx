@@ -12,8 +12,9 @@ import AppContext from '../context/AppContext';
 
 const { apiUrl } = useContext(AppContext);
 
-const socket5 = io("https://localhost:3000", {
+const socket5 = io(`${apiUrl}`, {
   withCredentials: true,
+  transports: ["websocket"]
 });
 
 const Section = ({ title, children }) => (

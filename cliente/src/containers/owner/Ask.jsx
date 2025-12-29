@@ -5,10 +5,12 @@ import { io } from "socket.io-client";
 import { listenToUserRequests } from '../../supabase-client';
 import AppContext from '../../context/AppContext';
 
-const socket7 = io("https://localhost:3000", {
-  withCredentials: true,
-});
+
 const { apiUrl } = useContext(AppContext);
+const socket7 = io(`${apiUrl}`, {
+  withCredentials: true,
+  transports: ["websocket"]
+});
 
 const AskToParticipate = () => {
   const roomId = 'main-room';

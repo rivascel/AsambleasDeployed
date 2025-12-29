@@ -4,12 +4,14 @@ import { io } from "socket.io-client";
 import { UserContext } from "../../components/UserContext";
 import { listenToRequests } from "../../supabase-client";
 import AppContext from '../../context/AppContext'
-// import AppContext from '../context/AppContext';
 
-const socket5 = io("https://localhost:3000", {
-  withCredentials: true,
-});
 const { apiUrl } = useContext(AppContext);
+
+const socket5 = io(`${apiUrl}`, {
+  withCredentials: true,
+  transports: ["websocket"]
+});
+
 
 const AttendeesList = () => {
 

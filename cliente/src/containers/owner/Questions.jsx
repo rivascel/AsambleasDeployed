@@ -4,10 +4,12 @@ import axios from 'axios';
 import { UserContext } from "../../components/UserContext";
 import AppContext from '../../context/AppContext';
 
-const socket2 = io("https://localhost:3000", {
-  withCredentials: true,
-});
 const { apiUrl } = useContext(AppContext);
+const socket2 = io(`${apiUrl}`, {
+  withCredentials: true,
+  transports: ["websocket"]
+});
+
 
 const Questions = () => {
   const [selected, setSelected] = useState(null);

@@ -12,9 +12,13 @@ import { startBroadcasting, stopLocalStream,
 import { listenToSignals, getAllViewersAndListen, subscribeToSignals, getViewerStreaming
 
  } from '../../supabase-client';
+ import AppContext from '../../context/AppContext';
 
-const socket10 = io("https://localhost:3000", {
+const { apiUrl } = useContext(AppContext);
+
+const socket10 = io(`${apiUrl}`, {
   withCredentials: true,
+  transports: ["websocket"]
 });
 
 const VideoGeneral = () => {

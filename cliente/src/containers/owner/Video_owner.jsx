@@ -10,11 +10,13 @@ import { listenToSignalsFromAdmin, listenToSignals, registerViewer, getAdminStre
           listenToRequests
  } from '../../supabase-client';
 import AppContext from '../../context/AppContext';
-
-const socket11 = io("https://localhost:3000", {
-  withCredentials: true,
-});
 const { apiUrl } = useContext(AppContext);
+
+const socket11 = io(`${apiUrl}`, {
+  withCredentials: true,
+  transports: ["websocket"]
+});
+
 
 const VideoGeneral = () => {
 const localRef = useRef();

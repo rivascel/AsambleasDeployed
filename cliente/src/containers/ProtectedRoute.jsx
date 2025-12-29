@@ -5,7 +5,7 @@ import axios from "axios";
 import { UserContext } from "../components/UserContext";
 import AppContext from '../context/AppContext';
 
-const { apiUrl } = useContext(AppContext);
+// const { apiUrl } = useContext(AppContext);
 
 const ProtectedRoute = ({ children }) => {
   const {
@@ -13,6 +13,7 @@ const ProtectedRoute = ({ children }) => {
     isAuthenticatedAdmin,
     setIsAuthenticatedOwner,
     setIsAuthenticatedAdmin,
+    apiUrl
   } = useContext(UserContext);
 
   const [isVerifying, setIsVerifying] = useState(true);

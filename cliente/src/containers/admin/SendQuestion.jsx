@@ -1,9 +1,12 @@
 import React, { useState, useContext } from "react";
 import { io } from "socket.io-client";
 import { UserContext } from "../../components/UserContext";
+import AppContext from '../../context/AppContext';
 
-const socket1 = io("https://localhost:3000", {
+const { apiUrl } = useContext(AppContext);
+const socket1 = io(`${apiUrl}`, {
   withCredentials: true,
+  transports: ["websocket"]
 });
 
 const SendQuestions = () => {

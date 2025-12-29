@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { io } from "socket.io-client";
 import { UserContext } from "../../components/UserContext";
+import AppContext from '../../context/AppContext';
+const { apiUrl } = useContext(AppContext);
 
-const socket3 = io("https://localhost:3000", {
+const socket3 = io(`${apiUrl}`, {
   withCredentials: true,
+  transports: ["websocket"]
 });
 
 const PollManage = () => {

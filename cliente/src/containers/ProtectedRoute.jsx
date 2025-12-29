@@ -4,15 +4,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../components/UserContext";
 
-// const { apiUrl } = useContext(AppContext);
-
 const ProtectedRoute = ({ children }) => {
   const {
     isAuthenticatedOwner,
     isAuthenticatedAdmin,
     setIsAuthenticatedOwner,
-    setIsAuthenticatedAdmin
-    // apiUrl
+    setIsAuthenticatedAdminS
   } = useContext(UserContext);
 
   const [isVerifying, setIsVerifying] = useState(true);

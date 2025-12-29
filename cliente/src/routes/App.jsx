@@ -9,6 +9,8 @@ import MagicLinkVerification from '../containers/MagicLinkVerification';
 import AdminRegister from '../containers/admin/AdminRegister';
 import Home from '../pages/Home';
 import ProtectedRoute from '../containers/ProtectedRoute';
+import AppContext from '../context/AppContext';
+const { apiUrl } = useContext(AppContext);
 
 function App() {
   const initialState = useInitialState();	

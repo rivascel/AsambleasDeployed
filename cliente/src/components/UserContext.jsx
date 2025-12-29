@@ -1,6 +1,8 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 
 export const UserContext = createContext();
+import AppContext from '../context/AppContext';
+const { apiUrl } = useContext(AppContext);
 
 const UserProvider = ({ children }) => {
   const [email, setEmail] = useState("");
@@ -46,7 +48,7 @@ const UserProvider = ({ children }) => {
   const checkBackendSession = async () => {
     try {
       // Verifica si hay sesión del owner
-      const ownerRes = await axios.get("https://localhost:3000/api/owner-data", {
+      const ownerRes = await axios.get(`${apiUrl}/api/owner-data`, {
         withCredentials: true,
       });
 
@@ -56,7 +58,7 @@ const UserProvider = ({ children }) => {
       }
 
       // Verifica si hay sesión del admin
-      const adminRes = await axios.get("https://localhost:3000/api/admin-data", {
+      const adminRes = await axios.get(`${apiUrl}/api/admin-data`, {
         withCredentials: true,
       });
 
@@ -86,7 +88,7 @@ const UserProvider = ({ children }) => {
   // 🔐 Función para cerrar sesión
   const logout = async () => {
     try {
-      await axios.post("https://localhost:3000/api/logout", {}, { withCredentials: true });
+      await axios.post(`${apiUrl}/api/logout`, {}, { withCredentials: true });
     } catch (error) {
       console.error("Error cerrando sesión:", error);
     } finally {

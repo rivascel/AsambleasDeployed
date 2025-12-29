@@ -9,7 +9,7 @@ const ProtectedRoute = ({ children }) => {
     isAuthenticatedOwner,
     isAuthenticatedAdmin,
     setIsAuthenticatedOwner,
-    setIsAuthenticatedAdminS
+    setIsAuthenticatedAdmin
   } = useContext(UserContext);
 
   const [isVerifying, setIsVerifying] = useState(true);

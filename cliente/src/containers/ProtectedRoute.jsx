@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../components/UserContext";
-import AppContext from '../context/AppContext';
 
 // const { apiUrl } = useContext(AppContext);
 
@@ -12,8 +11,8 @@ const ProtectedRoute = ({ children }) => {
     isAuthenticatedOwner,
     isAuthenticatedAdmin,
     setIsAuthenticatedOwner,
-    setIsAuthenticatedAdmin,
-    apiUrl
+    setIsAuthenticatedAdmin
+    // apiUrl
   } = useContext(UserContext);
 
   const [isVerifying, setIsVerifying] = useState(true);

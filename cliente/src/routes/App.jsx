@@ -1,9 +1,8 @@
 import '../App.css';
-import { BrowserRouter, Route, Routes, Router } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from '../containers/Layout';
 import AdminDashBoard from '../pages/AdminDashBoard';
 import OwnerDashBoard from '../pages/OwnerDashBoard';
-import OwnerRegister from '../containers/OwnerRegister';
 import useInitialState from '../hooks/useInitialState';
 import AppContext from '../context/AppContext';
 import MagicLinkVerification from '../containers/MagicLinkVerification';

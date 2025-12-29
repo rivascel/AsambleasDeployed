@@ -7,8 +7,6 @@ import OwnerRegister from '../containers/OwnerRegister';
 import useInitialState from '../hooks/useInitialState';
 import AppContext from '../context/AppContext';
 import MagicLinkVerification from '../containers/MagicLinkVerification';
-import React, { useContext } from "react";
-import UserProvider, { UserContext } from "../components/UserContext";
 import AdminRegister from '../containers/admin/AdminRegister';
 import Home from '../pages/Home';
 import ProtectedRoute from '../containers/ProtectedRoute';
@@ -18,7 +16,6 @@ function App() {
 
   return (
     <AppContext.Provider value={initialState}>
-      <UserProvider>
         <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home/>}/> 
@@ -28,7 +25,6 @@ function App() {
               <Route path="/magic-link" element={<MagicLinkVerification />} />
             </Routes>
         </BrowserRouter>
-      </UserProvider>
     </AppContext.Provider>
   )
 }

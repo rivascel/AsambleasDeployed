@@ -1,10 +1,12 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-
-export const UserContext = createContext();
 import AppContext from '../context/AppContext';
-const { apiUrl } = useContext(AppContext);
+
+export const UserContext = createContext(null);
+
 
 const UserProvider = ({ children }) => {
+  const { apiUrl } = useContext(AppContext);
+  
   const [email, setEmail] = useState("");
   const [users, setUsers] = useState([]); // NUEVO
   const [adminId, setAdminId] = useState(""); // NUEVO

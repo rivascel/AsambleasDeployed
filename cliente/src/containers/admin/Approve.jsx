@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
 import { io } from "socket.io-client";
-import { UserContext } from "../../components/UserContext";
 import { listenToRequests } from "../../supabase-client";
 import AppContext from '../../context/AppContext'
 

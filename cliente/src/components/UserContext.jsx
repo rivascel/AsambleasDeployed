@@ -6,7 +6,9 @@ export const UserContext = createContext(null);
 
 const UserProvider = ({ children }) => {
   const { apiUrl } = useContext(AppContext);
-  
+  // const apiUrl = import.meta.env.VITE_BACKEND_URL;
+
+
   const [email, setEmail] = useState("");
   const [users, setUsers] = useState([]); // NUEVO
   const [adminId, setAdminId] = useState(""); // NUEVO

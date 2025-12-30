@@ -3,10 +3,13 @@ import AppContext from '../context/AppContext';
 
 export const UserContext = createContext(null);
 
+import { API_URL } from '../config/api'; // Impórtalo directamente
+
 
 const UserProvider = ({ children }) => {
-  const { apiUrl } = useContext(AppContext);
+  // const { apiUrl } = useContext(AppContext);
   // const apiUrl = import.meta.env.VITE_BACKEND_URL;
+  const apiUrl = API_URL; // Úsalo directamente
 
 
   const [email, setEmail] = useState("");

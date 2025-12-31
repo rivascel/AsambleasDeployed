@@ -20,32 +20,32 @@ let remoteStream;
 let candidateQueue = [];
 const appliedAnswers = new Set();
 
-let configuration;
+let configuration=null;
 // Obtener configuración del servidor
-(async () => {
-  try {
+
+export const getWebRTCConfig = async () => {
+
+    if (configuration) return configuration;
+
     const response = await fetch(`${API_URL}/api/webrtc-config`, {
       credentials: 'include'
     });
     if (!response.ok){
-      const errorText = await response.text();
-      throw new Error(`Error fetching WebRTC config: ${errorText}`);
+      const Text = await response.text();
+      throw new Error(`Error fetching WebRTC config: ${Text}`);
     }
     configuration = await response.json();
-     console.log("✅ WebRTC config cargada:", configuration);
+    return configuration;
 
-  } catch (error) { 
-    console.error("❌ Error cargando WebRTC config:", error);
-  }
-
-})();
+};
 
 export async function getAdmin(roomId) {
   return await getActiveAdmin(roomId);
 };
 
-function createPeerConnection(viewerId) {
-  const pc = new RTCPeerConnection(configuration);
+async function createPeerConnection(viewerId) {
+  const config = await getWebRTCConfig();
+  const pc = new RTCPeerConnection(config);
   peerConnections[viewerId] = pc;
   return pc;
 }

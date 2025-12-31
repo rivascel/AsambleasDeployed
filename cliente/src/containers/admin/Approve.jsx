@@ -4,14 +4,17 @@ import { listenToRequests } from "../../supabase-client";
 import AppContext from '../../context/AppContext'
 
 
-const socket5 = io(`${apiUrl}`, {
-  withCredentials: true,
-  transports: ["websocket"]
-});
 
 
 const AttendeesList = () => {
   const { apiUrl } = useContext(AppContext);
+  
+  const socket5 = io(`${apiUrl}`, {
+    withCredentials: true,
+    transports: ["websocket"]
+  });
+
+
   const roomId = 'main-room';
   const [loading, setLoading] = useState(true);
   const [pendingUsersIds, setPendingUsersIds] = useState([]);

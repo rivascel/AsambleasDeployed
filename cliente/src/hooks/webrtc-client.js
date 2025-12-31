@@ -11,6 +11,9 @@ import {
  
 } from "../../src/supabase-client";
 
+const API_URL = import.meta.env.VITE_BACKEND_URL;
+
+
 const peerConnections={};
 let localStream;
 let remoteStream;
@@ -20,7 +23,7 @@ const appliedAnswers = new Set();
 let configuration;
 // Obtener configuración del servidor
 (async () => {
-  const response = await fetch('https://localhost:3000/api/webrtc-config');
+  const response = await fetch(`${API_URL}/api/webrtc-config`);
   configuration = await response.json();
 })();
 

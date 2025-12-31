@@ -5,7 +5,6 @@ import axios from 'axios';
 import AppContext from '../../context/AppContext';
 
 
-
 const PollingManage = () => {
     const { apiUrl } = useContext(AppContext);
 
@@ -66,10 +65,10 @@ const PollingManage = () => {
     async function countVotes() {
             try { 
             //trae las votaciones
-            const response = await axios.get("https://localhost:3000/api/file")
+            const response = await axios.get(`${apiUrl}/api/file`)
             //trae los propietarios y su participacion
-            const res = await axios.get("https://localhost:3000/api/emailFile")
-    
+            const res = await axios.get(`${apiUrl}/api/emailFile`)
+
             const votesData = response.data;
             const ownerData = res.data;
     

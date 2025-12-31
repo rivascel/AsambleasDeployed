@@ -1,12 +1,15 @@
 // Crea un componente ProtectedRoute
+import AppContext from '../context/AppContext';
+
 const ProtectedRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
+  const { apiUrl } = useContext(AppContext);
 
   useEffect(() => {
     const verifyAuth = async () => {
       try {
-        await axios.get("https://localhost:3000/api/owner-data", {
+        await axios.get(`${apiUrl}/api/owner-data`, {
           withCredentials: true
         });
         setIsAuthenticated(true);

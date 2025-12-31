@@ -125,7 +125,7 @@ const AskToParticipate = () => {
   const handleRequest = async () => {
     try {
       // Ejemplo de envío al backend (ajusta a tu API o Supabase)
-      await axios.post("https://localhost:3000/api/request-participation", 
+      await axios.post(`${apiUrl}/api/request-participation`, 
         { roomId: "main-room" }, 
         {
         withCredentials: true, // si usas cookies seguras
@@ -143,7 +143,7 @@ const AskToParticipate = () => {
   const cancelRequest = async () => {
     try {
       // Ejemplo de envío al backend (ajusta a tu API o Supabase)
-      await axios.post("https://localhost:3000/api/cancel-users", 
+      await axios.post(`${apiUrl}/api/cancel-users`, 
         { roomId: "main-room", userId:email }, 
         {withCredentials: true} // si usas cookies seguras
       );

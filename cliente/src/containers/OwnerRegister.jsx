@@ -4,9 +4,10 @@ import { UserContext } from "../components/UserContext";
 import "../styles/Header.css";
 import AppContext from '../context/AppContext';
 
-const { apiUrl } = useContext(AppContext);
+
 
 const RegisterOwner = ({ onRegister }) => {
+    const { apiUrl } = useContext(AppContext);
 
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");

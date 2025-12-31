@@ -4,14 +4,15 @@ import { UserContext } from "../../components/UserContext";
 import axios from 'axios';
 import AppContext from '../../context/AppContext';
 
-const { apiUrl } = useContext(AppContext);
 
-const socket3 = io(`${apiUrl}`, {
-  withCredentials: true,
-  transports: ["websocket"]
-});
 
 const PollingManage = () => {
+    const { apiUrl } = useContext(AppContext);
+
+    const socket3 = io(`${apiUrl}`, {
+    withCredentials: true,
+    transports: ["websocket"]
+    });
 
     const intervalo = useRef(null);
 

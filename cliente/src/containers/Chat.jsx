@@ -2,17 +2,19 @@ import React, { useState, useContext, useEffect } from "react";
 import { io } from "socket.io-client";
 import { UserContext } from "../components/UserContext";
 import AppContext from '../context/AppContext';
-const { apiUrl } = useContext(AppContext);
-
-const socket4 = io(`${apiUrl}`, {
-  withCredentials: true,
-   transports: ["websocket"]
-  // auth: {
-  //   username: "admin"
-  // }
-});
 
 const Chat = () => {
+
+  const { apiUrl } = useContext(AppContext);
+
+  const socket4 = io(`${apiUrl}`, {
+    withCredentials: true,
+    transports: ["websocket"]
+    // auth: {
+    //   username: "admin"
+    // }
+  });
+
   const { email, logout, ownerData } = useContext(UserContext);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);

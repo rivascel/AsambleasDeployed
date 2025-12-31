@@ -6,13 +6,14 @@ import { listenToUserRequests } from '../../supabase-client';
 import AppContext from '../../context/AppContext';
 
 
-const { apiUrl } = useContext(AppContext);
-const socket7 = io(`${apiUrl}`, {
-  withCredentials: true,
-  transports: ["websocket"]
-});
-
 const AskToParticipate = () => {
+  
+  const { apiUrl } = useContext(AppContext);
+  const socket7 = io(`${apiUrl}`, {
+    withCredentials: true,
+    transports: ["websocket"]
+  });
+
   const roomId = 'main-room';
   const [loading, setLoading] = useState(true);
   const { email, setCheckApprove } = useContext(UserContext);

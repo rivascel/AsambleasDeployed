@@ -10,16 +10,20 @@ import { listenToSignalsFromAdmin, listenToSignals, registerViewer, getAdminStre
           listenToRequests
  } from '../../supabase-client';
 import AppContext from '../../context/AppContext';
-const { apiUrl } = useContext(AppContext);
 
-const socket11 = io(`${apiUrl}`, {
-  withCredentials: true,
-  transports: ["websocket"]
-});
 
 
 const VideoGeneral = () => {
-const localRef = useRef();
+
+  const { apiUrl } = useContext(AppContext);
+
+  const socket11 = io(`${apiUrl}`, {
+    withCredentials: true,
+    transports: ["websocket"]
+  });
+
+
+  const localRef = useRef();
   const remoteRef = useRef();
   const hasSubscribed = useRef(false);
   const roomId = 'main-room';

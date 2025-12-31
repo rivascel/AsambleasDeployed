@@ -4,14 +4,15 @@ import axios from 'axios';
 import { UserContext } from "../../components/UserContext";
 import AppContext from '../../context/AppContext';
 
-const { apiUrl } = useContext(AppContext);
-const socket2 = io(`${apiUrl}`, {
-  withCredentials: true,
-  transports: ["websocket"]
-});
 
 
 const Questions = () => {
+  const { apiUrl } = useContext(AppContext);
+  const socket2 = io(`${apiUrl}`, {
+    withCredentials: true,
+    transports: ["websocket"]
+  });
+
   const [selected, setSelected] = useState(null);
   const [decisionText, setDecisionText] = useState("");
   const { email, ownerData } = useContext(UserContext);

@@ -3,13 +3,14 @@ import { io } from "socket.io-client";
 import { UserContext } from "../../components/UserContext";
 import AppContext from '../../context/AppContext';
 
-const { apiUrl } = useContext(AppContext);
-const socket1 = io(`${apiUrl}`, {
-  withCredentials: true,
-  transports: ["websocket"]
-});
+
 
 const SendQuestions = () => {
+  const { apiUrl } = useContext(AppContext);
+  const socket1 = io(`${apiUrl}`, {
+    withCredentials: true,
+    transports: ["websocket"]
+  });
   // const [decisionText, setDecisionText] = useState("Propuesta de ejemplo para ser votada.");
   const { decisionText, setDecisionText } = useContext(UserContext);
 

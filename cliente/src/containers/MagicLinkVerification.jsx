@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../components/UserContext";
 import AppContext from '../context/AppContext';
 
-const { apiUrl } = useContext(AppContext);
 
 const MagicLinkVerification = () => {
+  
+  const { apiUrl } = useContext(AppContext);  
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
   const { login, setIsAuthenticated } = useContext(UserContext);

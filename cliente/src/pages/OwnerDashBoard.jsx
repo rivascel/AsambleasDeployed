@@ -10,12 +10,6 @@ import Questions from '../containers/owner/Questions';
 import { UserContext } from "../components/UserContext";
 import AppContext from '../context/AppContext';
 
-const { apiUrl } = useContext(AppContext);
-
-const socket5 = io(`${apiUrl}`, {
-  withCredentials: true,
-  transports: ["websocket"]
-});
 
 const Section = ({ title, children }) => (
   <div className="bg-white p-4 rounded-lg shadow-md">
@@ -25,6 +19,14 @@ const Section = ({ title, children }) => (
 );
 
 const DashBoardOwner = () => {
+  const { apiUrl } = useContext(AppContext);
+
+  const socket5 = io(`${apiUrl}`, {
+    withCredentials: true,
+    transports: ["websocket"]
+  });
+
+
   // const [email, setEmail] = useState(null);
   const [error, setError] = useState(null);
   // const [quorum, setQuorum] = useState(null);

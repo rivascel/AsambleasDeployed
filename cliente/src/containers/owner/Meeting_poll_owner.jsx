@@ -2,14 +2,17 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { io } from "socket.io-client";
 import { UserContext } from "../../components/UserContext";
 import AppContext from '../../context/AppContext';
-const { apiUrl } = useContext(AppContext);
 
-const socket3 = io(`${apiUrl}`, {
-  withCredentials: true,
-  transports: ["websocket"]
-});
 
 const PollManage = () => {
+
+  const { apiUrl } = useContext(AppContext);
+
+  const socket3 = io(`${apiUrl}`, {
+    withCredentials: true,
+    transports: ["websocket"]
+  });
+
     const [decisionText, setDecisionText] = useState("Propuesta de ejemplo para ser votada.");
     const [displayTime, setDisplayTime] = useState("00:00");
     const { setVotingEnabled } = useContext(UserContext);

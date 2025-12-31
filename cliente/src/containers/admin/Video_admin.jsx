@@ -14,14 +14,16 @@ import { listenToSignals, getAllViewersAndListen, subscribeToSignals, getViewerS
  } from '../../supabase-client';
  import AppContext from '../../context/AppContext';
 
-const { apiUrl } = useContext(AppContext);
 
-const socket10 = io(`${apiUrl}`, {
-  withCredentials: true,
-  transports: ["websocket"]
-});
 
 const VideoGeneral = () => {
+
+  const { apiUrl } = useContext(AppContext);
+
+  const socket10 = io(`${apiUrl}`, {
+    withCredentials: true,
+    transports: ["websocket"]
+  });
 
   const [isBroadcasting, setIsBroadcasting] = useState(false);
   const localRef = useRef();

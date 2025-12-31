@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../components/UserContext";
-import AppContext from '../../context/AppContext';
+import AppContext from '../context/AppContext';
 
 const ProtectedRoute = ({ children }) => {
   const {

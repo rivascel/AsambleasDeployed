@@ -23,8 +23,21 @@ const appliedAnswers = new Set();
 let configuration;
 // Obtener configuración del servidor
 (async () => {
-  const response = await fetch(`${API_URL}/api/webrtc-config`);
-  configuration = await response.json();
+  try {
+    const response = await fetch(`${API_URL}/api/webrtc-config`, {
+      credentials: 'include'
+    });
+    if (!response.ok){
+      const errorText = await response.text();
+      throw new Error(`Error fetching WebRTC config: ${errorText}`);
+    }
+    configuration = await response.json();
+     console.log("✅ WebRTC config cargada:", configuration);
+
+  } catch (error) { 
+    console.error("❌ Error cargando WebRTC config:", error);
+  }
+
 })();
 
 export async function getAdmin(roomId) {

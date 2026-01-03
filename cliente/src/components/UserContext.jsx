@@ -53,33 +53,33 @@ const UserProvider = ({ children }) => {
   }, []);
 
   // 🔍 Verifica cookies del backend
-  // const checkBackendSession = async () => {
-  //   try {
-  //     // Verifica si hay sesión del owner
-  //     const ownerRes = await axios.get(`${apiUrl}/api/owner-data`, {
-  //       withCredentials: true,
-  //     });
+  const checkBackendSession = async () => {
+    try {
+      // Verifica si hay sesión del owner
+      const ownerRes = await axios.get(`${apiUrl}/api/owner-data`, {
+        withCredentials: true,
+      });
 
-  //     if (ownerRes.data?.user === "owner") {
-  //       setIsAuthenticatedOwner(true);
-  //       localStorage.setItem("isAuthenticatedOwner", "true");
-  //     }
+      if (ownerRes.data?.user === "owner") {
+        setIsAuthenticatedOwner(true);
+        localStorage.setItem("isAuthenticatedOwner", "true");
+      }
 
-  //     // Verifica si hay sesión del admin
-  //     const adminRes = await axios.get(`${apiUrl}/api/admin-data`, {
-  //       withCredentials: true,
-  //     });
+      // Verifica si hay sesión del admin
+      const adminRes = await axios.get(`${apiUrl}/api/admin-data`, {
+        withCredentials: true,
+      });
 
-  //     if (adminRes.data?.user === "administrador") {
-  //       setIsAuthenticatedAdmin(true);
-  //       localStorage.setItem("isAuthenticatedAdmin", "true");
-  //     }
-  //   } catch (error) {
-  //     // Si no hay sesión activa, se limpia el localStorage
-  //     localStorage.removeItem("isAuthenticatedOwner");
-  //     localStorage.removeItem("isAuthenticatedAdmin");
-  //   }
-  // };
+      if (adminRes.data?.user === "administrador") {
+        setIsAuthenticatedAdmin(true);
+        localStorage.setItem("isAuthenticatedAdmin", "true");
+      }
+    } catch (error) {
+      // Si no hay sesión activa, se limpia el localStorage
+      localStorage.removeItem("isAuthenticatedOwner");
+      localStorage.removeItem("isAuthenticatedAdmin");
+    }
+  };
 
   const login = (email, data) => {
     setEmail(email);
